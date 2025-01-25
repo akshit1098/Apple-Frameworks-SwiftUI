@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct FrameworkDetailView: View {
+    
+    
     var framework: Framework
+    @Binding var isShowDetailView: Bool
+    
+    
     var body: some View {
         VStack{
             
@@ -16,7 +21,7 @@ struct FrameworkDetailView: View {
                 Spacer()
                 
                 Button {
-                    
+                    isShowDetailView = false
                 } label: {
                     Image(systemName: "xmark")
                         .foregroundStyle(Color(.label)) // this will enable fading in x mark which will behave black in white background and vice versa
@@ -45,6 +50,7 @@ struct FrameworkDetailView: View {
 }
 
 #Preview {
-    FrameworkDetailView(framework: MockData.sampleFramework)
+    // hard code to false
+    FrameworkDetailView(framework: MockData.sampleFramework, isShowDetailView: .constant(false))
         .preferredColorScheme(.dark)
 }
