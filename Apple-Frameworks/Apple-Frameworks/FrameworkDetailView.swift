@@ -11,7 +11,8 @@ struct FrameworkDetailView: View {
     
     
     var framework: Framework
-    @Binding var isShowDetailView: Bool
+    @Binding var isShowingDetailView: Bool
+    @State private var isShowingSafariView = false
     
     
     var body: some View {
@@ -21,7 +22,7 @@ struct FrameworkDetailView: View {
                 Spacer()
                 
                 Button {
-                    isShowDetailView = false
+                    isShowingDetailView = false
                 } label: {
                     Image(systemName: "xmark")
                         .foregroundStyle(Color(.label)) // this will enable fading in x mark which will behave black in white background and vice versa
@@ -40,17 +41,23 @@ struct FrameworkDetailView: View {
             Spacer()
             
             Button {
+                isShowingSafariView = true
                 
             } label: {
-               
+                AFButton(title: "Learn More")
             }
         }
         .preferredColorScheme(.dark)
+        // can use sheet for 98% cover
+        // can use .fullScreenCover for 100% cover
+        .sheet(isPresented: $isShowingSafariView, content: {
+            SafariView(url: URL(string: framework.urlString) ?? URL(string: "www.apple.com")!)
+        })
     }
 }
 
 #Preview {
     // hard code to false
-    FrameworkDetailView(framework: MockData.sampleFramework, isShowDetailView: .constant(false))
+    FrameworkDetailView(framework: MockData.sampleFramework, isShowingDetailView: .constant(false))
         .preferredColorScheme(.dark)
 }

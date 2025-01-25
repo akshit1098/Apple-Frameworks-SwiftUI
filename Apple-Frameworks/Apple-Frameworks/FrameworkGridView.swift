@@ -34,7 +34,7 @@ struct FrameworkGridView: View {
             }
             .navigationTitle("Apple Frameworks")
             .sheet(isPresented: $viewModel.isShowingDetailView) {
-                FrameworkDetailView(framework: viewModel.selectedFramework!, isShowDetailView: $viewModel.isShowingDetailView)
+                FrameworkDetailView(framework: viewModel.selectedFramework!, isShowingDetailView: $viewModel.isShowingDetailView)
             }
         }
         .preferredColorScheme(.dark)
