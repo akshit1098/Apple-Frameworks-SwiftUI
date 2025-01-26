@@ -18,19 +18,7 @@ struct FrameworkDetailView: View {
     var body: some View {
         VStack{
             
-            HStack {
-                Spacer()
-                
-                Button {
-                    isShowingDetailView = false
-                } label: {
-                    Image(systemName: "xmark")
-                        .foregroundStyle(Color(.label)) // this will enable fading in x mark which will behave black in white background and vice versa
-                        .imageScale(.large)
-                        .frame(width: 44, height: 44)
-                }
-            }
-            .padding()
+        
             
             Spacer()
             FrameworkTitleView(framework: framework)

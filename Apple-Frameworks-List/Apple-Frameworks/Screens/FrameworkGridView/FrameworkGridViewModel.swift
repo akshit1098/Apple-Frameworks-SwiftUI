@@ -25,4 +25,8 @@ final class FrameworkGridVewModel: ObservableObject {
     // and our GridView will listen to that and change when it updates
     @Published var isShowingDetailView = false
     
+    let columns: [GridItem] = [GridItem(.flexible()),
+                               GridItem(.flexible()),
+                               GridItem(.flexible())] // number of vertical columns = 2
+    
 }
